@@ -1,5 +1,6 @@
 import org.gradle.util.GradleVersion
 
+
 plugins {
     id 'java-library'
     id 'com.google.protobuf'
@@ -7,7 +8,7 @@ plugins {
     id 'eclipse'
 }
 
-version = '0.17-SNAPSHOT'
+version = "1.0.3"
 
 dependencies {
     api 'org.bouncycastle:bcprov-jdk15to18:1.76'
@@ -122,16 +123,40 @@ artifacts {
 }
 
 publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            artifactId = 'bitcoinj-core'
-            from components.java
-            artifact sourcesJar
-            artifact javadocJar
-
-            pom {
-                description = 'A Java Bitcoin library'
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/undercurrent-ai/bitcoinj")
+            credentials {
+                username = project.findProperty("gpr.user")
+                password = project.findProperty("gpr.key")
             }
         }
     }
+    publications {
+        gpr(MavenPublication) {
+            groupId = "com.undercurrent"
+            artifactId = "bitcoinj"
+            version = "$version"
+
+            from components.java
+        }
+    }
 }
+
+
+
+//publishing {
+//    publications {
+//        mavenJava(MavenPublication) {
+//            artifactId = 'bitcoinj-core'
+//            from components.java
+//            artifact sourcesJar
+//            artifact javadocJar
+//
+//            pom {
+//                description = 'A Java Bitcoin library'
+//            }
+//        }
+//    }
+//}

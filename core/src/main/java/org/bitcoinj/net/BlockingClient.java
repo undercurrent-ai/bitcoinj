@@ -154,7 +154,7 @@ public class BlockingClient implements MessageWriteTarget {
             stream.flush();
             return ListenableCompletableFuture.completedFuture(null);
         } catch (IOException e) {
-            log.error("Error writing message to connection, closing connection", e);
+//            log.error("Error writing message to connection, closing connection", e);
             closeConnection();
             throw e;
         }

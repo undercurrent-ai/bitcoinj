@@ -1532,7 +1532,7 @@ public class PeerGroup implements TransactionBroadcaster {
                 InternalUtils.getUninterruptibly(future);
         } catch (ExecutionException e) {
             Throwable cause = Throwables.getRootCause(e);
-            log.warn("Failed to connect to " + address + ": " + cause.getMessage());
+//            log.warn("Failed to connect to " + address + ": " + cause.getMessage());
             handlePeerDeath(peer, cause);
             return null;
         }

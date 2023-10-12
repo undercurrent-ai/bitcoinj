@@ -30,7 +30,7 @@ project(':wallettool').name = 'bitcoinj-wallettool'
 include 'examples'
 project(':examples').name = 'bitcoinj-examples'
 
-if (GradleVersion.current().compareTo(minFxGradleVersion) > 0 && JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_17)) {
+if (GradleVersion.current().compareTo(minFxGradleVersion) > 0 && JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_20)) {
     System.err.println "Including wallettemplate because ${GradleVersion.current()}"
     include 'wallettemplate'
     project(':wallettemplate').name = 'bitcoinj-wallettemplate'
